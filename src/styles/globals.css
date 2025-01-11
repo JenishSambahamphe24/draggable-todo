@@ -19,7 +19,6 @@
   z-index: 30; 
   margin: 0 auto;
   width: 100%; 
-  max-width: 768px; 
   border: 1px solid #d39430; 
   background-color: rgba(255, 255, 255, 0.8);
   padding: 0.75rem 0; 
@@ -62,15 +61,14 @@
 }
 
 /* Todo-Form */
-.form-wrapper {
-  width: 100%; 
-  margin-left: auto;
-  margin-right: auto; 
-  padding: 0.5rem; 
-}
+
 .form {
   background-color: white; 
   border-radius: 1rem;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+
   box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1); 
   border: 1px solid #d39430; 
 }
@@ -122,7 +120,8 @@
   align-items: center; 
 }
 .input-field::placeholder {
-  text-align: center;
+  text-align: left;
+  padding-left: 1rem;
   color: #9ca3af; 
 }
 
@@ -173,8 +172,8 @@
   width: 100%; 
   margin-left: auto; 
   margin-right: auto; 
-  padding-left: 1.5rem; 
-  padding-right: 1.5rem; 
+  /* padding-left: 1.5rem; 
+  padding-right: 1.5rem;  */
   margin-top: 0.25rem; 
   height: 100%;
   display: flex; 
@@ -282,10 +281,26 @@
   .header {
       max-width: 1024px;
   }
-  .form-wrapper{
-    width: 70%; 
-  }
+
   .todo-list {
     width: 70%;
 }
+.form {
+  width: 70%;
 }
+.input-field::placeholder {
+  text-align: center;
+  color: #9ca3af; 
+}
+}
+@media (max-width: 1024px) {
+  .input-field {
+    text-align: left; 
+    justify-content: space-around; 
+  }
+
+  .input-field::placeholder {
+    text-align: left; /* Align placeholder text to left on small screens */
+  }
+}
+

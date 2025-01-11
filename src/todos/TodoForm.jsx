@@ -10,15 +10,17 @@ function TodoForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (task.trim) {
+    if (task.trim() !== "") {
       dispatch(addTodo(task));
-      setTask("");
+      setTask(""); 
+    } else {
+      alert("Please enter a task!"); 
     }
   };
 
   return (
-    <main className="form-wrapper">
-      <div className={`form ${mode === "dark" ? "dark" : ""}`}>
+    // <main className="form-wrapper">
+      <main className={`form ${mode === "dark" ? "dark" : ""}`}>
         <div style={{ padding: "1rem" }}>
           <div style={{ textAlign: "center" }}>
             <h1 >Add your task</h1>
@@ -45,8 +47,8 @@ function TodoForm() {
             </div>
           </div>
         </div>
-      </div>
-    </main>
+      </main>
+    // </main>
   );
 }
 
