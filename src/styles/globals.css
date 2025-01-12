@@ -300,7 +300,7 @@
   }
 
   .input-field::placeholder {
-    text-align: left; /* Align placeholder text to left on small screens */
+    text-align: left; 
   }
 }
 

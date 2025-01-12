@@ -12,8 +12,8 @@ const ItemTypes = {
 
 const DraggableTaskItem = React.memo(({ item, index, moveTodo, startEditing }) => {
   const dispatch = useDispatch();
-  const [newText, setNewText] = useState(item.text); 
-  const inputRef = useRef(null); 
+  const [newText, setNewText] = useState(item.text);
+  const inputRef = useRef(null);
 
   useEffect(() => {
     if (item.editing && inputRef.current) {
@@ -22,16 +22,17 @@ const DraggableTaskItem = React.memo(({ item, index, moveTodo, startEditing }) =
   }, [item.editing]);
 
   const handleEditSubmit = (id) => {
-    if (newText.trim()) { 
+    if (newText.trim()) {
       dispatch(editTodo({ id, text: newText }));
       alert('task edited successfully')
-      startEditing(null, ""); 
+      startEditing(null, "");
     } else {
       alert("Task cannot be empty!");
     }
   };
 
-  const dragRef = useRef(null); 
+  //  Ref for drag 
+  const dragRef = useRef(null);
 
   const [{ isDragging }, drag] = useDrag({
     type: ItemTypes.TODO,
@@ -46,7 +47,7 @@ const DraggableTaskItem = React.memo(({ item, index, moveTodo, startEditing }) =
     hover: (draggedItem) => {
       if (draggedItem.index !== index) {
         moveTodo(draggedItem.index, index);
-        draggedItem.index = index; 
+        draggedItem.index = index;
       }
     },
   });
@@ -71,13 +72,13 @@ const DraggableTaskItem = React.memo(({ item, index, moveTodo, startEditing }) =
         />
         <div className="item" style={{ flexGrow: 1 }}>
           {item.editing ? (
-            <div style={{ width:'100%' }} className="relative">
+            <div style={{ width: '100%' }} className="relative">
               <input
                 ref={inputRef}
                 type="text"
                 value={newText}
                 onChange={(e) => setNewText(e.target.value)}
-                onBlur={() => handleEditSubmit(item.id)} 
+                onBlur={() => handleEditSubmit(item.id)}
                 className="item-edit-field"
               />
             </div>
